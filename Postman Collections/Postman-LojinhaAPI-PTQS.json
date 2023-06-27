@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "bd56be5e-9ed2-4fd6-a41a-9d4667a70c89",
+		"name": "Lojinha API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastrar um novo usuário",
+			"_postman_id": "c47f3901-39ea-4c5c-9b82-21ec7e0e6b8a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"usuarioNome\": \"Thiago Torres\",\r\n  \"usuarioLogin\": \"osuperthiago\",\r\n  \"usuarioSenha\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/v2/usuarios"
+			},
+			"response": []
+		},
+		{
+			"name": "Obter token do usuário",
+			"_postman_id": "43d719d0-8132-49a4-800b-1daad4d7310c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"usuarioLogin\": \"osuperthiago\",\r\n  \"usuarioSenha\": \"123456\"\r\n}\r\n",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": "{{base_url}}/v2/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar um novo produto",
+			"_postman_id": "a021a3fc-0ff6-47c6-b9a0-403a8dd91091",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjQ4NSIsInVzdWFyaW9sb2dpbiI6Im9zdXBlcnRoaWFnbyIsInVzdWFyaW9ub21lIjoiVGhpYWdvIFRvcnJlcyJ9.zszSnkl_SSBQSq8Q_-ejrQdCH_Qm9Pnks5GnEZv8Y6o",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"produtoNome\": \"Caneta\",\r\n  \"produtoValor\": 17.00,\r\n  \"produtoCores\": [\r\n    \"Branco\"\r\n  ],\r\n  \"produtoUrlMock\": \"string\",\r\n  \"componentes\": [\r\n    {\r\n      \"componenteNome\": \"Tampa\",\r\n      \"componenteQuantidade\": 11\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": "{{base_url}}/v2/produtos"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar os produtos do usuário",
+			"_postman_id": "b5fda729-ddd6-4c30-9c3a-0bb8393a1e17",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjQ4NSIsInVzdWFyaW9sb2dpbiI6Im9zdXBlcnRoaWFnbyIsInVzdWFyaW9ub21lIjoiVGhpYWdvIFRvcnJlcyJ9.zszSnkl_SSBQSq8Q_-ejrQdCH_Qm9Pnks5GnEZv8Y6o",
+						"type": "text"
+					},
+					{
+						"key": "query",
+						"value": "produtoNome",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": "{{base_url}}/v2/produtos"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar os produtos do usuário produtoNome",
+			"_postman_id": "144e0a93-37d3-4b91-9887-d294e5ca845e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjQ4NSIsInVzdWFyaW9sb2dpbiI6Im9zdXBlcnRoaWFnbyIsInVzdWFyaW9ub21lIjoiVGhpYWdvIFRvcnJlcyJ9.zszSnkl_SSBQSq8Q_-ejrQdCH_Qm9Pnks5GnEZv8Y6o",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/v2/produtos?produtoNome=Caneta",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v2",
+						"produtos"
+					],
+					"query": [
+						{
+							"key": "produtoNome",
+							"value": "Caneta"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar um produto do usuário",
+			"_postman_id": "7fbd74ec-566a-43e7-aa6d-10e399321b52",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjQ4NSIsInVzdWFyaW9sb2dpbiI6Im9zdXBlcnRoaWFnbyIsInVzdWFyaW9ub21lIjoiVGhpYWdvIFRvcnJlcyJ9.zszSnkl_SSBQSq8Q_-ejrQdCH_Qm9Pnks5GnEZv8Y6o",
+						"type": "text"
+					}
+				],
+				"url": "{{base_url}}/v2/produtos/214337"
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar informações de um produto",
+			"_postman_id": "4a2db9c1-48ea-490a-9b02-1eb705187a48",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjQ4NSIsInVzdWFyaW9sb2dpbiI6Im9zdXBlcnRoaWFnbyIsInVzdWFyaW9ub21lIjoiVGhpYWdvIFRvcnJlcyJ9.zszSnkl_SSBQSq8Q_-ejrQdCH_Qm9Pnks5GnEZv8Y6o",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"produtoNome\": \" Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular Celular\",\r\n        \"produtoValor\": 1717.17,\r\n        \"produtoCores\": [\r\n            \"Branco\"\r\n        ],\r\n        \"produtoUrlMock\": \"string\",\r\n        \"componentes\": [\r\n            {\r\n                \"componenteId\": 233420,\r\n                \"componenteNome\": \"Capinha\",\r\n                \"componenteQuantidade\": 3\r\n            },\r\n            {\r\n                \"componenteId\": 233421,\r\n                \"componenteNome\": \"Cabo USB\",\r\n                \"componenteQuantidade\": 1\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/v2/produtos/214421"
+			},
+			"response": []
+		},
+		{
+			"name": "Remover um produto",
+			"_postman_id": "165abf8e-57a7-474c-873c-eac7ac00366e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNjQ4NSIsInVzdWFyaW9sb2dpbiI6Im9zdXBlcnRoaWFnbyIsInVzdWFyaW9ub21lIjoiVGhpYWdvIFRvcnJlcyJ9.zszSnkl_SSBQSq8Q_-ejrQdCH_Qm9Pnks5GnEZv8Y6o",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"produtoNome\": \"Celular\",\r\n        \"produtoValor\": 1717.17,\r\n        \"produtoCores\": [\r\n            \"Branco\"\r\n        ],\r\n        \"produtoUrlMock\": \"string\",\r\n        \"componentes\": [\r\n            {\r\n                \"componenteId\": 233420,\r\n                \"componenteNome\": \"Capinha\",\r\n                \"componenteQuantidade\": 2\r\n            },\r\n            {\r\n                \"componenteId\": 233421,\r\n                \"componenteNome\": \"Cabo USB\",\r\n                \"componenteQuantidade\": 1\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/v2/produtos/{214337}"
+			},
+			"response": []
+		}
+	]
+}
